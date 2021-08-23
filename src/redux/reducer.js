@@ -26,9 +26,21 @@ const taskReducer = createSlice({
             }
             return task;
         })
-    }
+    },
+    //completed Tasks
+    completedTasks: (state, action) => {
+        return state.map( task => {
+            if(task.id === action.payload){
+                return {
+                    ...task,
+                    completed: true,
+                }
+            }
+            return task;
+        })
+    },
   },
 })
 
-export const { addTasks, removeTasks, updateTasks } = taskReducer.actions
+export const { addTasks, removeTasks, updateTasks, completedTasks } = taskReducer.actions
 export const reducer =  taskReducer.reducer
